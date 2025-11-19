@@ -1,8 +1,8 @@
 import mdx from "@astrojs/mdx";
-import netlify from "@astrojs/netlify";
+// import netlify from "@astrojs/netlify";  // Cloudflare Pages用に削除
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import keystatic from "@keystatic/astro";
+// import keystatic from "@keystatic/astro";  // Cloudflare Pages（静的サイト）では動作しないため削除
 import compress from "@playform/compress";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
@@ -11,13 +11,13 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://blogsmith-pro.cosmicthemes.com",
-	adapter: netlify({
-		imageCDN: false,
-	}),
-	redirects: {
-		"/admin": "/keystatic",
-	},
+	site: "https://variant.fit",  // カスタムドメインに変更
+	// adapter: netlify({  // Cloudflare Pages用に削除（静的サイトなのでアダプター不要）
+	// 	imageCDN: false,
+	// }),
+	// redirects: {  // Keystatic CMS削除に伴いコメントアウト
+	// 	"/admin": "/keystatic",
+	// },
 	// i18n configuration must match src/config/translationData.json.ts
 	i18n: {
 		defaultLocale: "en",
@@ -46,7 +46,7 @@ export default defineConfig({
 		mdx(),
 		react(),
 		icon(),
-		keystatic(),
+		// keystatic(),  // Cloudflare Pages（静的サイト）では動作しないため削除
 		sitemap(),
 		compress({
 			HTML: true,
