@@ -1,121 +1,115 @@
-# Welcome to Blogsmith Pro!
+# nullvariant-garden
 
-1. To get started, first install all necessary packages with `npm install`, then run an initial build to make sure the setup works `npm run build`.
-2. Copy the Pagefind build (for site search) to be available for the dev environment. This varies depending on your OS. I've created a few NPM commands to help.
-   - For Windows, run `npm run winsearch`
-   - For OSX or Linux, run `npm run osxsearch`
-3. Finally, start the dev server with `npm run dev` to verify the initial setup.
-4. Next, you'll want to configure your site i18n setup (one language, or multiple). Simply run the command `npm run config-i18n` and follow the script instructions to get setup! For further information, see the [i18n documentation](https://cosmicthemes.com/docs/i18n/).
-5. Now you can setup the site to your liking!
-   - [Style customization](https://cosmicthemes.com/docs/styles/)
-   - [Content editing](https://cosmicthemes.com/docs/data/)
-   - [Animations](https://cosmicthemes.com/docs/animations/)
-   - [Keystatic CMS](https://cosmicthemes.com/docs/keystatic/) - if you don't want Keystatic you can run `npm run remove-keystatic`
-   - [Forms](https://cosmicthemes.com/docs/contact-form/)
+個人ウェブサイト（会員サイト）プロジェクト。Astroベースの静的サイト生成により、自分の作品を公開・共有する場として構築されています。
 
-Should you need any assistance, send me a message at support@cosmicthemes.com
+> 📦 **このリポジトリは [nullvariant-atelier](https://github.com/nullvariant/nullvariant-atelier) のサブモジュールです**  
+> 詳細な設計思想・意思決定記録（ADR）は、PRIVATEリポジトリ（nullvariant-atelier）で管理されています。
 
-## Code Intro
+---
 
-I have created a few code tours to introduce you to the codebase. You will need the extension [Code Tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour) to view them in VSCode.
+## 📖 概要
 
-The source files have the following setup. Note that not all files are included - it is already long, no one wants it to be longer.
+このリポジトリは、Null;Variantが発信する思想・哲学・作品などを展示する空間です。
+
+### 技術スタック
+
+- **静的サイト生成**: [Astro](https://astro.build/)
+- **スタイリング**: Tailwind CSS
+- **コンテンツ管理**: Markdown + MDX
+- **検索機能**: Pagefind
+- **デプロイ**: Cloudflare Pages
+
+---
+
+## 🚀 セットアップ手順
+
+### 前提条件
+
+- Node.js 18以上
+- npm または yarn
+
+### インストール
+
+```bash
+# 依存関係のインストール
+npm install
+
+# 初回ビルド（動作確認）
+npm run build
+
+# 検索機能のセットアップ（OS別）
+# macOS/Linux:
+npm run osxsearch
+
+# Windows:
+npm run winsearch
+
+# 開発サーバーの起動
+npm run dev
+```
+
+開発サーバーは `http://localhost:4321` で起動します。
+
+### 主要コマンド
+
+| コマンド | 説明 |
+|---------|------|
+| `npm run dev` | 開発サーバーを起動 |
+| `npm run build` | 本番用ビルドを生成 |
+| `npm run preview` | ビルド結果をプレビュー |
+| `npm run config-i18n` | 多言語設定を構成 |
+
+---
+
+## 📂 プロジェクト構成
 
 ```
 .
-├── .tours/
-│   └── code-intro.tour
-├── .vscode/
-│   └── extensions.json
-├── public/
-│   ├── favicons/
-│   │   └── favicon.ico
-│   ├── images/
-│   └── robots.txt
 ├── src/
-│   ├── assets/
-│   │   └── images/
-│   │       └── site-logo.png
-│   ├── components/
-│   │   ├── Hero/
-│   │   │   ├── Hero.astro
-│   │   │   ├── HeroImage.astro
-│   │   │   └── HeroWave.astro
-│   │   └── Footer/
-│   │       └── Footer.astro
-│   ├── config/
-│   │   └── navData.json.ts
-│   ├── data/
-│   │   ├── authors/
-│   │   ├── blog/
-│   │   ├── otherPages/
-│   │   └── config.ts
-│   ├── js/
-│   │   └── utils.ts
-│   ├── layouts/
-│   │   └── BaseLayout.astro
-│   ├── pages/
-│   │   ├── index.astro
-│   │   ├── blog/
-│   │   │   ├── [...page].astro
-│   │   │   └── [...slug].astro
-│   │   ├── categories/
-│   │   │   ├── [category]/
-│   │   │   │   └── [...page].astro
-│   │   │   └── index.astro
-│   │   ├── tags/
-│   │   │   ├── [tag]/
-│   │   │   │   └── [...page].astro
-│   │   │   └── index.astro
-│   │   ├── [page].astro
-│   │   ├── 404.astro
-│   │   ├── contact.astro
-│   │   ├── index.astro
-│   │   └── rss.xml.ts
-│   └── styles/
-│       └── global.scss
-├── .gitignore
-├── .prettierrc.mjs
-├── astro.config.mjs
-├── keystatic.config.tsx
-├── netlify.toml
-├── package.json
-├── package-lock.json
-├── README.md
-├── tailwind.config.cjs
-└── tsconfig.json
+│   ├── components/     # Astroコンポーネント
+│   ├── layouts/        # レイアウトテンプレート
+│   ├── pages/          # ページルーティング
+│   ├── data/           # コンテンツ（Markdown/MDX）
+│   └── config/         # サイト設定
+├── public/             # 静的アセット
+└── dist/              # ビルド出力（生成される）
 ```
 
-For robots like Google to see the correct sitemap, you will want to edit the `public/robots.txt` file to use your website domain.
+---
 
-## Other Resources
+## 🎨 設計思想
 
-- See my blog post on [recommended Astro web development setup](https://cosmicthemes.com/blog/astro-web-development-setup/).
-- You can learn more information from the [theme docs](https://cosmicthemes.com/docs/) page on the [Cosmic Themes Website](https://cosmicthemes.com/).
-- For support, see the [support page](https://cosmicthemes.com/support/).
-- [License details](https://cosmicthemes.com/license/)
+このプロジェクトの設計思想は、以下の原則に基づいています：
 
-## General Astro Info
+### データ主権の重視
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- 独自ドメインで運用
+- コンテンツの源泉そのものはプライベートリポジトリで管理
+- 個人情報などのデータは含まない
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### 責任範囲の明確化
 
-Any static assets, like images, can be placed in the `public/` directory. I also frequently use `src/assets` for images when using Astro asssets for image optimization.
+- コンテンツ生成は当リポジトリの範囲
+- 認証・決済・メール配信は信頼できる外部サービスに委託
 
-### 🧞 Commands
+### テーマ着せ替えアーキテクチャ
 
-All commands are run from the root of the project, from a terminal:
+- 複数のAstroテーマを柔軟に切り替え可能
+- コンテンツとテーマの分離により、テーマ変更時の影響を最小化
+- 将来的に、最も最適化されたテンプレートを生み出すことを見据えた設計
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+> **📦 詳細な設計思想・意思決定記録（ADR）は、PRIVATEリポジトリ（[nullvariant-atelier](https://github.com/nullvariant/nullvariant-atelier)）で管理されています。**  
+> アクセス制限により公開されていませんが、このリポジトリは公開プロダクトとして、個人ウェブサイトを提供しています。
 
-### 👀 Want to learn more?
+詳細は [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) を参照してください。
 
-Feel free to check out the [Astro documentation](https://docs.astro.build).
+---
+
+## 🔗 外部リンク
+
+- **Astro Documentation**: https://docs.astro.build
+- **Cloudflare Pages**: https://pages.cloudflare.com
+
+---
+
+_Last Updated: 2025-11-19_
