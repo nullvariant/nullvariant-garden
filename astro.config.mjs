@@ -20,8 +20,8 @@ export default defineConfig({
 	// },
 	// i18n configuration must match src/config/translationData.json.ts
 	i18n: {
-		defaultLocale: "en",
-		locales: ["en", "fr"],
+		defaultLocale: "ja",
+		locales: ["ja", "en"],
 		routing: {
 			prefixDefaultLocale: false,
 		},
