@@ -29,7 +29,7 @@ const {
 	heroImage,
 	authorsData,
 	postFrontmatter,
-	noindex = false,
+	noindex = true, // カスタマイズ中のため、デフォルトでnoindexを有効化
 } = Astro.props as Props;
 
 const currLocale = getLocaleFromUrl(Astro.url);

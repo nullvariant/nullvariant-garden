@@ -1,1 +1,8 @@
-Sitemap: https://blogsmith-pro.cosmicthemes.com/sitemap-index.xml
+User-agent: *
+Disallow: /
+
+# カスタマイズ中のため、検索エンジンのクロールをブロック
+# 公開準備ができたら、以下のように変更:
+# User-agent: *
+# Allow: /
+# Sitemap: https://variant.fit/sitemap-index.xml
